@@ -23,7 +23,7 @@ namespace Api
 
         protected override void ConfigureServicesExt(IServiceCollection services)
         {
-            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("test secret 1234567890"));
+            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Config.Jwt.Secret));
             var tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
