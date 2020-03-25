@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Swisschain.Api.Api.MessagingContract</AssemblyName>
+    <PackageId>Swisschain.Api.Api.MessagingContract</PackageId>
+    <RootNamespace>Swisschain.Api.Api.MessagingContract</RootNamespace>
+    <Authors>Swisschain</Authors>
+    <Product>Api</Product>
+  </PropertyGroup>
+
+</Project>
