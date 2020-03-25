@@ -24,8 +24,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github workflow", "Github workflow", "{54F26A6C-5B76-40E5-8E9C-2FA0551BC226}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\ci.yml = .github\workflows\ci.yml
-		.github\workflows\release-api-client.yml = .github\workflows\release-api-client.yml
-		.github\workflows\release-messaging-contract.yml = .github\workflows\release-messaging-contract.yml
 		.github\workflows\release-service.yml = .github\workflows\release-service.yml
 		.github\workflows\validate-commit.yml = .github\workflows\validate-commit.yml
 	EndProjectSection
