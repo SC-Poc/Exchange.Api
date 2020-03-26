@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Linq;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -43,10 +44,15 @@ namespace Api
                 })
                 .ConfigureAppConfiguration(c =>
                 {
-                    c.AddJsonFile("ocelot.json", false, false);
-                    
-                    var aaa = ApplicationEnvironment.Config["OcelotSettingsUrl"];
-                    Console.WriteLine(aaa);
+                    c.AddJsonFile("ocelot.json", true, false);
+
+                    var remoteOcelotHost= ApplicationEnvironment.Config["RemoteOcelotConfigHost"];
+                    if (!string.IsNullOrEmpty(remoteOcelotHost))
+                    {
+                        if (remoteOcelotHost.Last() != '/')
+                            remoteOcelotHost += "/";
+                        c.AddWebJsonConfiguration($"{remoteOcelotHost}ocelot.json", isOptional: true);
+                    }
                 });
     }
 }
