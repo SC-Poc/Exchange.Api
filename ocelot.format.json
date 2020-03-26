@@ -13,7 +13,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "service-assets.matching-engine.svc.cluster.local",
+          "Host": "${Exchange.AssetsServiceConnectionUrl}",
           "Port": 80
         }
       ],
@@ -39,7 +39,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "service-assets.matching-engine.svc.cluster.local",
+          "Host": "${Exchange.AssetsServiceConnectionUrl}",
           "Port": 80
         }
       ],

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Swisschain.Sdk.Server.Common;
+using Swisschain.Sdk.Server.Configuration.WebJsonSettings;
 using Swisschain.Sdk.Server.Loggin;
 
 namespace Api
@@ -42,6 +44,9 @@ namespace Api
                 .ConfigureAppConfiguration(c =>
                 {
                     c.AddJsonFile("ocelot.json", false, false);
+                    
+                    var aaa = ApplicationEnvironment.Config["OcelotSettingsUrl"];
+                    Console.WriteLine(aaa);
                 });
     }
 }
