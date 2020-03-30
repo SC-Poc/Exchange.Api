@@ -59,10 +59,9 @@
         "Region": "assetdata"
       }
     }
+    
 
 
-  ],
-  "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:5000"
-  }
+
+  ]
 }

@@ -59,5 +59,7 @@ node_modules
 **/launchSettings.json
 /src/**/appsettings.json
 /src/**/appsettings.*.json
+/src/**/ocelot.json
+/src/**/ocelot.*.json
 **/*sonar*
 /client/**/*.xml

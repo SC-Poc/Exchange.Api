@@ -1,0 +1,26 @@
+{
+  "ReRoutes": [
+    {
+      "UpstreamPathTemplate": "/api/temp/sign-in",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+
+      "DownstreamPathTemplate": "/api/sign-in",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "service-admin-api.matching-engine.svc.cluster.local",
+          "Port": 80
+        }
+      ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 30,
+        "Limit": 10
+      }
+    }
+  ]
+}
