@@ -61,32 +61,16 @@ namespace Api
 
                 }, (context, c) =>
                 {
-                    var remoteOcelotHost = ApplicationEnvironment.Config["RemoteOcelotConfigHost"];
-                    if (!string.IsNullOrEmpty(remoteOcelotHost))
-                    {
-                        if (remoteOcelotHost.Last() != '/')
-                            remoteOcelotHost += "/";
-
-                        var client = new HttpClient();
-                        
-                        var url = $"{remoteOcelotHost}ocelot";
-                        c.AddJsonStream(client.GetStreamAsync(url).Result);
-                        
-
-                        //c.AddJsonFile("ocelot111.json");
-
-                        //c.AddWebJsonConfiguration(url);
-                    }
-
-                    //c.AddOcelot(c);
-                    // c.AddOcelot((IWebHostEnvironment)context.HostingEnvironment);
+                    
                     
                 })
                 .ConfigureWebHost(builder =>
                     {
                         builder.ConfigureAppConfiguration((context, configurationBuilder) =>
                         {
-                            LoadOcelotFile("ocelot", context);
+                            LoadOcelotFile("ocelot.general", context);
+                            LoadOcelotFile("ocelot.asset", context);
+                            LoadOcelotFile("ocelot.operations", context);
                             LoadOcelotFile("ocelot.temp", context);
 
                             configurationBuilder.AddOcelot(context.HostingEnvironment);
@@ -117,9 +101,10 @@ namespace Api
                     writer.Flush();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Console.WriteLine($"Error on load ocelot ");
+                Console.WriteLine($"Error on load ocelot: {name}.");
+                Console.WriteLine(ex.ToString());
             }
 
         }
