@@ -42,6 +42,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ocelot", "Ocelot", "{C342BB
 	ProjectSection(SolutionItems) = preProject
 		ocelot\ocelot.account-data.json = ocelot\ocelot.account-data.json
 		ocelot\ocelot.assets.json = ocelot\ocelot.assets.json
+		ocelot\ocelot.candle.json = ocelot\ocelot.candle.json
 		ocelot\ocelot.general.json = ocelot\ocelot.general.json
 		ocelot\ocelot.operations.json = ocelot\ocelot.operations.json
 		ocelot\ocelot.order-book.json = ocelot\ocelot.order-book.json
