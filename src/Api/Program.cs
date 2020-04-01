@@ -20,6 +20,8 @@ namespace Api
             public IReadOnlyCollection<string> RemoteSettingsUrls { get; set; }
         }
 
+        private static ILogger<Program> _logger;
+
         public static void Main(string[] args)
         {
             Console.Title = "Exchange Api";
@@ -31,19 +33,19 @@ namespace Api
                 ApplicationEnvironment.Config["SeqUrl"],
                 remoteSettingsConfig.RemoteSettingsUrls ?? Array.Empty<string>());
 
-            var logger = loggerFactory.CreateLogger<Program>();
+            _logger = loggerFactory.CreateLogger<Program>();
 
             try
             {
-                logger.LogInformation("Application is being started");
+                _logger.LogInformation("Application is being started");
 
                 CreateHostBuilder(loggerFactory, remoteSettingsConfig).Build().Run();
 
-                logger.LogInformation("Application has been stopped");
+                _logger.LogInformation("Application has been stopped");
             }
             catch (Exception ex)
             {
-                logger.LogCritical(ex, "Application has been terminated unexpectedly");
+                _logger.LogCritical(ex, "Application has been terminated unexpectedly");
             }
         }
 
@@ -69,8 +71,10 @@ namespace Api
                         builder.ConfigureAppConfiguration((context, configurationBuilder) =>
                         {
                             LoadOcelotFile("ocelot.general", context);
-                            LoadOcelotFile("ocelot.asset", context);
+                            LoadOcelotFile("ocelot.assets", context);
                             LoadOcelotFile("ocelot.operations", context);
+                            LoadOcelotFile("ocelot.order-book", context);
+                            LoadOcelotFile("ocelot.account-data", context);
                             LoadOcelotFile("ocelot.temp", context);
 
                             configurationBuilder.AddOcelot(context.HostingEnvironment);
@@ -80,6 +84,7 @@ namespace Api
         private static void LoadOcelotFile(string name,
             WebHostBuilderContext context)
         {
+            var url = "";
             try
             {
                 var remoteOcelotHost = ApplicationEnvironment.Config["RemoteOcelotConfigHost"];
@@ -90,7 +95,7 @@ namespace Api
 
                     using var client = new HttpClient();
 
-                    var url = $"{remoteOcelotHost}{name}";
+                    url = $"{remoteOcelotHost}{name}";
                     var json = client.GetStringAsync(url).Result;
 
                     var rootPath = context.HostingEnvironment.ContentRootPath;
@@ -103,8 +108,7 @@ namespace Api
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error on load ocelot: {name}.");
-                Console.WriteLine(ex.ToString());
+                _logger.LogError(ex, "Error on load ocelot: {ocelotUrl}.", url);
             }
 
         }
