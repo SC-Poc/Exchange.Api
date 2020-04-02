@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>Swisschain.Api</AssemblyName>
+    <AssemblyName>Swisschain.Exchange.Api</AssemblyName>
     <UserSecretsId>a5a1eb80-245a-4382-bcb3-12f8d935c95d</UserSecretsId>
   </PropertyGroup>
 

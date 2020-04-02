@@ -27,6 +27,7 @@ namespace Api
             Console.Title = "Exchange Api";
 
             var remoteSettingsConfig = ApplicationEnvironment.Config.Get<RemoteSettingsConfig>();
+            remoteSettingsConfig.RemoteSettingsUrls ??= Array.Empty<string>();
 
             using var loggerFactory = LogConfigurator.Configure(
                 "Exchange",
