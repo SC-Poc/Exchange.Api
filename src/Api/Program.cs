@@ -77,6 +77,7 @@ namespace Api
                             LoadOcelotFile("ocelot.order-book", context);
                             LoadOcelotFile("ocelot.account-data", context);
                             LoadOcelotFile("ocelot.candle", context);
+                            LoadOcelotFile("ocelot.accounts", context);
                             LoadOcelotFile("ocelot.temp", context);
 
                             configurationBuilder.AddOcelot(context.HostingEnvironment);

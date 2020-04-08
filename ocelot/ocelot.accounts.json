@@ -1,0 +1,33 @@
+{
+  "ReRoutes": [
+
+    {
+      "UpstreamPathTemplate": "/api/accounts/{offset}",
+      "UpstreamHttpMethod": [
+        "Get", "Post", "Put", "Delete"
+      ],
+
+      "DownstreamPathTemplate": "/api/{offset}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "${Exchange.AccountServiceConnectionUrl}",
+          "Port": 80
+        }
+      ],
+
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 30,
+        "Limit": 30
+      }
+    }
+
+  ]
+}

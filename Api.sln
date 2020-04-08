@@ -41,6 +41,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ocelot", "Ocelot", "{C342BBFD-74D7-437F-BE26-9AF7C6E2AB7F}"
 	ProjectSection(SolutionItems) = preProject
 		ocelot\ocelot.account-data.json = ocelot\ocelot.account-data.json
+		ocelot\ocelot.accounts.json = ocelot\ocelot.accounts.json
 		ocelot\ocelot.assets.json = ocelot\ocelot.assets.json
 		ocelot\ocelot.candle.json = ocelot\ocelot.candle.json
 		ocelot\ocelot.general.json = ocelot\ocelot.general.json
