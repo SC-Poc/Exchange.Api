@@ -73,6 +73,7 @@ namespace Api
                         {
                             LoadOcelotFile("ocelot.general", context);
                             LoadOcelotFile("ocelot.assets", context);
+                            LoadOcelotFile("ocelot.fees", context);
                             LoadOcelotFile("ocelot.operations", context);
                             LoadOcelotFile("ocelot.order-book", context);
                             LoadOcelotFile("ocelot.account-data", context);
