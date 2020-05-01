@@ -3,6 +3,33 @@
     {
       "UpstreamPathTemplate": "/api/fees/{offset}",
       "UpstreamHttpMethod": [
+        "Post",
+        "Put",
+        "Delete"
+      ],
+      "DownstreamPathTemplate": "/api/{offset}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "${Exchange.FeesServiceConnectionUrl}",
+          "Port": 80
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 30,
+        "Limit": 20
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/fees/{offset}",
+      "UpstreamHttpMethod": [
         "Get"
       ],
       "DownstreamPathTemplate": "/api/{offset}",
@@ -23,6 +50,10 @@
         "Period": "1m",
         "PeriodTimespan": 30,
         "Limit": 20
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 5,
+        "Region": "feesdata"
       }
     }
   ]
